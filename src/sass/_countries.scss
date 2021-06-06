@@ -1,0 +1,103 @@
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: #dddddd;
+  background-image: url(../images/earth.png);
+  background-repeat: no-repeat;
+  background-position: top 50px right 50px;
+  background-size: 400px 400px;
+}
+
+.input-country {
+  display: inline-block;
+  padding: 15px;
+  font-size: 23px;
+  width: 600px;
+  height: 20px;
+  border: none;
+  border-radius: 7px;
+  box-shadow: 4px 4px 4px 3px rgba(0, 0, 0, 0.5);
+}
+
+.input-country::placeholder {
+  font-style: italic;
+  font-size: 20px;
+}
+
+.thumb-search {
+  padding: 60px;
+}
+
+.result {
+  padding-left: 60px;
+}
+
+.country {
+  &__list {
+    list-style: circle;
+    margin: 0;
+  }
+
+  &__item {
+    font-size: 40px;
+
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+  &__text {
+    margin: 0;
+  }
+
+  &__title {
+    margin-top: 0;
+    font-size: 75px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  &__capital,
+  &__population {
+    font-size: 45px;
+    font-weight: bold;
+    margin-top: 0;
+  }
+  &__thumb-info {
+    display: flex;
+    justify-content: space-between;
+    width: 1100px;
+    padding: 40px;
+    background-color: rgb(245, 241, 241);
+    border: none;
+    border-radius: 7px;
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.languages {
+  font-size: 45px;
+  font-weight: bold;
+  margin-top: 0;
+}
+
+.languages-list {
+  margin: 0;
+
+  &__item:not(:last-child) {
+    margin-bottom: 10px;
+  }
+  &__text {
+    margin: 0;
+  }
+}
+
+.info,
+.languages-list__item {
+  font-size: 35px;
+  font-weight: normal;
+}
