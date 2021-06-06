@@ -2,18 +2,16 @@ import fetchCountries from './fetchCountries';
 import refs from './refs';
 import countryCardTpl from '../templates/country-card.hbs';
 import countriesListTpl from '../templates/countries-list.hbs';
-import { alert } from '../../node_modules/@pnotify/core/dist/PNotify.js';
+// import { alert } from '../../node_modules/@pnotify/core/dist/PNotify.js';
+import pnotify from './pnotify';
 
 const debounce = require('lodash.debounce');
-
-const alertMsg = () => alert({
-    text: 'Too many matches found. Please enter a more specific query!'
-})
+const arrorMessage = 'Too many matches found. Please enter a more specific query!';
 
 const resultMoreTen = (array) => {
     if (array.length > 10) {
         refs.result.innerHTML = '';
-        alertMsg()
+        pnotify(arrorMessage)
     } else { return array }
 }
 
