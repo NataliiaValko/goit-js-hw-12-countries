@@ -2,7 +2,6 @@ import fetchCountries from './fetchCountries';
 import refs from './refs';
 import countryCardTpl from '../templates/country-card.hbs';
 import countriesListTpl from '../templates/countries-list.hbs';
-// import { alert } from '../../node_modules/@pnotify/core/dist/PNotify.js';
 import pnotify from './pnotify';
 
 const debounce = require('lodash.debounce');

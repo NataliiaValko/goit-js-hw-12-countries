@@ -17,4 +17,5 @@ const pnotify = text => {
   };
   error(options);
 };
+
 export default pnotify;
