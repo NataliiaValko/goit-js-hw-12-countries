@@ -13,7 +13,7 @@ body {
   background-size: 400px 400px;
 }
 
-.input-country {
+.js-input-country {
   display: inline-block;
   padding: 15px;
   font-size: 23px;
@@ -24,16 +24,16 @@ body {
   box-shadow: 4px 4px 4px 3px rgba(0, 0, 0, 0.5);
 }
 
-.input-country::placeholder {
+.js-input-country::placeholder {
   font-style: italic;
   font-size: 20px;
 }
 
-.thumb-search {
+.js-thumb-search {
   padding: 60px;
 }
 
-.result {
+.js-result {
   padding-left: 60px;
 }
 

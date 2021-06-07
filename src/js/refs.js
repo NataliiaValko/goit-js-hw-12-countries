@@ -1,4 +1,4 @@
 export default {
-    input: document.querySelector('.input-country'),
-    result: document.querySelector('.result'),
+    input: document.querySelector('.js-input-country'),
+    result: document.querySelector('.js-result'),
 }
