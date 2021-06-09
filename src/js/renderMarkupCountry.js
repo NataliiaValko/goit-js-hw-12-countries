@@ -5,19 +5,36 @@ import countriesListTpl from '../templates/countries-list.hbs';
 import pnotify from './pnotify';
 
 const debounce = require('lodash.debounce');
-const arrorMessage = 'Too many matches found. Please enter a more specific query!';
+const moreSpecificMessage = 'Too many matches found. Please enter a more specific query!';
+const invalidMessage = 'Sorry we couldn’t find anything =/. Change your request, please!';
+
+const clearPage = () => refs.result.innerHTML = '';
+
+const requestValidation = (request) => {
+    if (request.status !== 404) {
+        return request
+    }
+}
+
+const showMessage = (message) => {
+    pnotify(message);
+    clearPage()
+}
+
+const showInvalidMessage = () => {
+    showMessage(invalidMessage)
+}
 
 const resultMoreTen = (array) => {
-    if (array.length > 10) {
-        refs.result.innerHTML = '';
-        pnotify(arrorMessage)
-    } else { return array }
+    return array.length > 10
+        ? showMessage(moreSpecificMessage)
+        :array
 }
 
 const resultMoreOne = (array) => {
-    if (array && array.length > 1 && array.length < 10) {
-        markupСountriesList(array)
-    } else {return array}
+    return array && array.length > 1 && array.length < 10
+        ? markupСountriesList(array)
+        :array
 }
 
 const markupСountriesList = array => {
@@ -32,14 +49,14 @@ const createsResultTpl = array => {
 
 const markupCountryResult = (e) => {
     const value = e.target.value.trim();
-    if (!value) {
-        refs.result.innerHTML = '';
-        return
-    };
-    fetchCountries(value)
-        .then(resultMoreTen)
-        .then(resultMoreOne)
-        .then(createsResultTpl)
+    return !value
+        ? clearPage()
+        : fetchCountries(value)
+            .then(requestValidation)
+            .then(resultMoreTen)
+            .then(resultMoreOne)
+            .then(createsResultTpl)
+            .catch(showInvalidMessage)
 }
 
 refs.input.addEventListener('input', debounce(markupCountryResult, 500));
